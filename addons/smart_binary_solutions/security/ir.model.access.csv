@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_smart_binary_solutions_smart_binary_solutions,smart_binary_solutions.smart_binary_solutions,model_smart_binary_solutions_smart_binary_solutions,base.group_user,1,1,1,1

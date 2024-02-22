@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ir_rule_user_tecnico_show_mov_propios" model="ir.rule">
+        <field name="name">Mostrar Movimientos Propios</field>
+        <field name="model_id" ref="smart_binary_solutions.model_products_sbs_db" />
+        <field name="domain_force">
+            [
+                ('create_uid', '=', user.id)
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('smart_binary_solutions.res_groups_tecnico1')),
+                                    (4, ref('smart_binary_solutions.res_groups_administrador'))]" />
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="perm_write" eval="True"/>
+    </record>
+
+
+</odoo>

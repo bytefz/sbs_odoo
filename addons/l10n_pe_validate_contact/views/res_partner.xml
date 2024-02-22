@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pg_sunat_res_partner_view" model="ir.ui.view">
+        <field name="name">res.partner.form.sunat.contact</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <group name="sunat_information">
+                    <group col="3">
+                        <field name="state" style="pointer-events: none; cursor: default;"/>
+                        <field name="state_color" widget="state_selection" nolabel="1"
+                               style="pointer-events: none; cursor: default;"/>
+                    </group>
+                    <group col="3">
+                        <field name="condition" style="pointer-events: none; cursor: default;"/>
+                        <field name="condition_color" widget="state_selection" nolabel="1"
+                               style="pointer-events: none; cursor: default;"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

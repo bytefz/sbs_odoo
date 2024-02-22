@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="modul_sbs" model="ir.module.category">
+        <field name="name">SBS</field>
+    </record>
+
+    <record id="res_groups_administrador" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="category_id" ref="modul_sbs"/>
+    </record>
+
+    <record id="res_groups_tecnico1" model="res.groups">
+        <field name="name">Tecnico 1</field>
+        <field name="category_id" ref="modul_sbs"/>
+    </record>
+
+</odoo>

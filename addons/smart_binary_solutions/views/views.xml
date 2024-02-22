@@ -1,0 +1,173 @@
+<odoo>
+    <!-- Funcionalidades -->
+
+    <record id="action_view_productIn" model="ir.actions.act_window">
+        <field name="name">Servicio de Entrada</field>
+        <field name="res_model">products.sbs.db</field>
+        <field name="context">{"search_default_tag_in":1}</field>
+    </record>
+
+    <record id="action_view_productOut" model="ir.actions.act_window">
+        <field name="name">Servicio de Salida</field>
+        <field name="res_model">products.sbs.db</field>
+        <field name="context">{"search_default_tag_out":1}</field>
+    </record>
+
+    <record id="view_res_users_add_products_id" model="ir.ui.view">
+        <field name="name">view.res.users.add.products_id</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_simple_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="sheet" position="inside">
+                <group>
+                    <field name="products_id_user" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <!-- Forms -->
+
+    <record id="product_in_view_form" model="ir.ui.view">
+        <field name="name">product_id.products.sbs.db</field>
+        <field name="model">products.sbs.db</field>
+        <field name="arch" type="xml">
+            <form string="Entrada de Producto">
+                <header>
+                    <button string="Enviar a Salida" type="object" name="tag_entregado" class="oe_highlight"/>
+                    <field name="tag" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group style="text-align: center;">
+                            <field name="id" default="self.env.products_sbs_db.id"/>
+                        </group>
+
+                    </group>
+                    <h2 style="color: #71639e;">Nombre del Cliente</h2>
+                    <group>
+                        <group>
+                            <field name="name_client"/>
+                            <field name="address" />
+                            <field name="number_phone" />
+                        </group>
+                        <group>
+                            <field name="contact" />
+                            <field name="ruc_dni" />
+                            <field name="email" />
+                        </group>
+                    </group>
+                </sheet>
+                <sheet string="Caracteristicas del Producto">
+                <h2 style="color: #71639e;">Caracteristicas del Producto</h2>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="brand" />
+                        </group>
+                        <group>
+                            <field name="serie" />
+                            <field name="date" />
+                        </group>
+                    </group>
+                    <h2 style="color: #71639e;">Datos del Producto</h2>
+                    <group>
+                        <field name="producto_flaw" />
+                        <field name="observation" />
+                    </group>
+                    <group>
+                        <field name="solution" />
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="user_id" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Vistas -->
+    <record id="view_tree_products" model="ir.ui.view">
+        <field name="name">view.tree.products.sbs.db</field>
+        <field name="model">products.sbs.db</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name_client" />
+                <field name="name" />
+                <field name="brand" />
+                <field name="serie" optional="hide"/>
+                <field name="date" optional="hide"/>
+                <field name="user_id" />
+                <field name="producto_flaw" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Configuraciones de Servidor -->
+    <record id="action_server_mi_cuenta" model="ir.actions.server">
+        <field name="name">Mi Cuenta</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="state">code</field>
+        <field name="code">action = model.mi_cuenta()</field>
+    </record>
+
+    <!-- Filtrado de Búsqueda -->
+
+    <record id="products_in_view_search" model="ir.ui.view">
+        <field name="name">products_in.view.search</field>
+        <field name="model">products.sbs.db</field>
+        <field name="arch" type="xml">
+            <search >
+                <field name="name" />
+                <field name="brand" />
+                <field name="serie" />
+            <!-- 
+                <filter name="filter_today" 
+                string="Hoy" 
+                domain="[('date', '&gt;', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('date', '&lt;', datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/> -->
+
+                <filter name="tag_in" string="Entrada" domain="[('tag', '=', 'Recibido')]"/>
+                <filter name="tag_out" string="Salida" domain="[('tag', '=', 'Entregado')]"/> <!-- context="{'group_by': 'field_name'}" -->
+                <filter name="marca_group" string="Marca" context="{'group_by': 'brand'}" />
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Menús -->
+    <!-- <menuitem
+        id="mi_cuenta_menu"
+        name="Mi Cuenta"
+        action="smart_binary_solutions.action_server_mi_cuenta"
+        parent=""/> -->
+    <menuitem
+        id="product_menu"
+        name="Servicios"
+        action="smart_binary_solutions.action_view_productIn"
+        web_icon="smart_binary_solutions,static/src/img/servicios.png"
+        />
+
+    <!-- Acciones de Ventana -->
+
+        <!-- Model products.sbs.db -->
+        <menuitem
+            id="products_all_menu"
+            name="Servicios"
+            action=""
+            parent="smart_binary_solutions.product_menu"/>
+        <menuitem
+            id="products_in_menu"
+            name="Servicios Entrada"
+            action="smart_binary_solutions.action_view_productIn"
+            parent="smart_binary_solutions.products_all_menu"/>
+        <menuitem
+            id="products_out_menu"
+            name="Servicios Salida"
+            action="smart_binary_solutions.action_view_productOut"
+            parent="smart_binary_solutions.products_all_menu"/>
+    
+</odoo>

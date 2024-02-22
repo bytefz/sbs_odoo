@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="smart_binary_solutions.report_producto_in">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="product">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="border-style: solid;border-width:1px;">
+                            <table style="width:100%;">
+                                <tbody class="invoice_tbody">
+                                    <tr>
+                                        <td><t t-esc="'Razón Social: '"/></td>
+                                        <td><t t-esc="product.name_client"/></td>
+                                        <td><t t-esc="'Contacto: '"/></td>
+                                        <td><t t-esc="product.contact"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><t t-esc="'Dirección: '"/></td>
+                                        <td><t t-esc="product.address"/></td>
+                                        <td><t t-esc="'Ruc/Dni: '"/></td>
+                                        <td><t t-esc="product.ruc_dni"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><t t-esc="'Telefono: '"/></td>
+                                        <td><t t-esc="product.number_phone"/></td>
+                                        <td><t t-esc="'Email: '"/></td>
+                                        <td><t t-esc="product.email"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div><br/></div>
+                        <div>
+                            <div>
+                               <table style="width:100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td><t t-esc="'Marca: '"/></td>
+                                            <td style="border: solid;border-width:1px;"><t t-esc="product.brand"/></td>
+                                            <td><t t-esc="' Modelo: '"/></td>
+                                            <td style="border: solid;border-width:1px;"><t t-esc="product.name"/></td>
+                                            <td><t t-esc="' Serie: '"/></td>
+                                            <td style="border: solid;border-width:1px;"><t t-esc="product.serie"/></td>
+                                        </tr>
+                                    </tbody>
+                               </table>
+                            </div>
+                        </div>
+                        <div><br/></div>
+                        <div>
+                            <table style="width:100%;height:100px;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:15.43%;"><t t-esc="'Falla: '"/></td>
+                                        <td colspan="5" style="border:solid;border-width:1px;vertical-align:top;padding: 15px;"><t t-esc="product.producto_flaw"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div><br/></div>
+                        <div>
+                            <table style="width:100%;height:100px;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:15.43%;"><t t-esc="'Observaciones: '"/></td>
+                                        <td colspan="5" style="border:solid;border-width:1px;vertical-align:top;padding: 15px;"><t t-esc="product.observation"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div><br/></div>
+                        <div><br/></div>
+                        <div style="padding-left: 240px;">
+                            <table style="width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000;width:100px;text-align:center;vertical-align:top;">Firma del Cliente</td>
+                                        <td style="width:100px;"></td>
+                                        <td style="border-top: 1px solid #000;width:100px;padding-left:5px;text-align:center;vertical-align:top;">Smart Binary Solutions SAC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div><br/></div>
+                        <div><br/></div>
+                        <div style="padding-left: 160px;">
+                            <table style="width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000;width:100px;text-align:center;vertical-align:top;">Nombre</td>
+                                        <td style="width:100px;"></td>
+                                        <td style="border-top: 1px solid #000;width:100px;padding-left:5px;text-align:center;vertical-align:top;">DNI</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <div style="font-weight: bold;margin-top:10px">Nota: Después de ser avisado para el recojo del equipo, cuenta con un mes para su recojo, de lo contrario pasado los 30 días o 31 días se cobrará S/.1.00 por día de almacenamiento.</div>
+                        </div>
+                            
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+
+</odoo>

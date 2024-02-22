@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Formato Propio -->
+
+    <record id="smart_binary_solutions.paperformart_A4" model="report.paperformat">
+        <field name="name">Formato A4 Horizontal</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="default" eval="False"/>
+        <field name="dpi" eval="90"/>
+        <field name="margin_top" eval="40" />
+        <field name="margin_right" eval="7" />
+        <field name="margin_left" eval="7" />
+        <field name="margin_bottom" eval="32" />
+        <field name="header_spacing" eval="35" />
+        <field name="header_line" eval="False" />
+    </record>
+
+    <!-- Formato de PDF para productos de entrada -->
+    
+    <report 
+        id="smart_binary_solutions.action_report_producto_in"
+        string="Reporte de Entrada"
+        model="products.sbs.db"
+        report_type="qweb-pdf"
+        paperformat="smart_binary_solutions.paperformart_A4"
+        name="smart_binary_solutions.report_producto_in"
+        print_report_name="'orden%s_%s'%(object.id,object.name)"/>
+
+    <!-- <record id="action_report_product_in" model="ir.actions.report">
+        <field name="name">Reporte de Entrada</field>
+        <field name="model">products.sbs.db</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">smart_binary_solutions.report_producto_in</field>
+        <field name="report_file">smart_binary_solutions.report_producto_in</field>
+        <field name="print_report_name">smart_binary_solutions.report_producto_in</field>
+        <field name="binding_model_id" ref="model_products_sbs_db"/>
+        <field name="binding_type">report</field>
+    </record> -->
+
+</odoo>
